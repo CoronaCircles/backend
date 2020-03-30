@@ -30,10 +30,21 @@ def get_contacts(filename):
 
     names = []
     emails = []
+    lineofdata = []
+    # print(names)
+    # print(emails)
     with open(filename, mode='r', encoding='utf-8') as contacts_file:
         for a_contact in contacts_file:
-            names.append(a_contact.split()[0])
-            emails.append(a_contact.split()[1])
+#            print(a_contact)
+            lineofdata = a_contact.split()
+#            print(lineofdata)
+#            print(len(lineofdata))
+#            print(lineofdata[0])
+#            print(lineofdata[1])
+            names.append(lineofdata[0])
+            emails.append(lineofdata[1])
+#            print("names are ", names)
+#            print(emails)
     return names, emails
 
 
@@ -50,10 +61,12 @@ def read_template(filename):
 
 def main(emailList, message):  # expects 2 lists from text files to build email
     names, emails = get_contacts(emailList)  # read contacts
+    print("back in main ", names, emails)
+    print("past line 63")
     message_template = read_template(message)
 
     # set up the SMTP server
-    s = smtplib.SMTP(host='	smtp.strato.de', port=465)
+    s = smtplib.SMTP(host='	smtp.strato.de', port=567)
     s.starttls()
     s.login(MY_ADDRESS, PASSWORD)
 
@@ -84,4 +97,4 @@ def main(emailList, message):  # expects 2 lists from text files to build email
 
 
 if __name__ == '__main__':
-    main()
+    main('contacts.txt', 'message.txt')
