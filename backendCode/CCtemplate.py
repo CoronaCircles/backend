@@ -8,17 +8,20 @@ import MySQLdb
 
 
 def functionhere():
-    conn = MySQLdb.connect(host="rdbms.strato.de",user="U4098787",  passwd="1light1light!!", db="DB4098787")
+    conn = MySQLdb.connect(host="rdbms.strato.de",
+                           user="U4098787",
+                           passwd="1light1light!!", db="DB4098787")
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO `USER` (`FIRSTNAME`, `LASTNAME`, `DISPLAYNAME`, `EMAILADDRESS`) VALUES
+    cursor.execute('INSERT INTO `USER` (`FIRSTNAME`, `LASTNAME`,`DISPLAYNAME`, `EMAILADDRESS`) VALUES
     (sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])')
     conn.commit()
     conn.close()
-    #row = cursor.fetchone()
-    #rows = cursor.fetchall()
-    #do something with the data in row or rows
+    # row = cursor.fetchone()
+    # rows = cursor.fetchall()
+    # do something with the data in row or rows
 
-if len(sys.argv)-1  ==  4:
+
+if len(sys.argv)-1 == 4:
     functionhere()
 else:
     print("wrong number of arguments")

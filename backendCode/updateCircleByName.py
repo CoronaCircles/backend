@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# insert new user into db
+#
 # Corona Circles, codevscovid19 hackathon Zurich
 # by Christopher Rehm 29-30 mar 2020, christopherrehm@web.de
 
