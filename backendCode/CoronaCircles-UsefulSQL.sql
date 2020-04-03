@@ -14,7 +14,7 @@ UPDATE `CIRCLE` SET `URL` = 'Jitsi meeting URL' WHERE `ID` = 1;
 
 --By circle name
 UPDATE `CIRCLE` c, (SELECT `ID` FROM `CIRCLE` WHERE `NAME` = 'Gail\'s circle') curr
-SET `URL` = 'Jitsi meeting URL3' 
+SET `URL` = 'Jitsi meeting URL3'
 WHERE c.`ID` = curr.`ID`;
 -------------------------------------------------------------------
 
@@ -25,8 +25,8 @@ WHERE u.ID = curr.ID;
 
 --Find circle ID by name (Note: name is unique in the table CIRCLE, i.e. no 2 circles may have the same name)
 --Note: This is a strict assumption for the proof-of-concept and would be removed for the real project
-SELECT c.ID 
-FROM CIRCLE c, (SELECT ID FROM CIRCLE WHERE NAME = 'Gail\'s circle') curr 
+SELECT c.ID
+FROM CIRCLE c, (SELECT ID FROM CIRCLE WHERE NAME = 'Gail\'s circle') curr
 WHERE c.ID = curr.ID;
 
 --New association circle to host (after creating a new circle)
@@ -59,7 +59,7 @@ AND cu.CU2USER = u.ID
 AND cu.CU2CIRCLE = c.ID
 AND cu.ISHOST = 1
 UNION
-SELECT c.ID, c.NAME, c.DESCRIPTION, c.URL, 'Guest' 
+SELECT c.ID, c.NAME, c.DESCRIPTION, c.URL, 'Guest'
 FROM USER u, (SELECT ID FROM USER WHERE EMAILADDRESS='simona.bonardi@mydomain.net') curr, CIRCLEUSER cu, CIRCLE c
 WHERE u.ID = curr.ID
 AND cu.CU2USER = u.ID
@@ -81,8 +81,3 @@ WHERE u.ID = curr.ID
 AND cu.CU2USER = u.ID
 AND cu.CU2CIRCLE = c.ID
 AND cu.ISHOST = 0;
-
-
-
-
-
