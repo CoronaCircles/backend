@@ -21,7 +21,6 @@ function insertNewUser($firstName, $lastName, $displayName, $emailaddress)
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
 	$returnId = $conn->insert_id;
-	printf ("<p>New Record has id %d.\n</p>", $returnId);
 	return($returnId);
   $conn->close();
 	// return user Id
@@ -47,8 +46,9 @@ function insertNewCircle($circleName, $description, $frequency, $url)
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+		$returnId = $conn->insert_id;
+		return($returnId);
 		$conn->close();
-		// return circle Id
 }
 
 function addNewUserToCircle($circleID, $userID)
@@ -69,6 +69,8 @@ function addNewUserToCircle($circleID, $userID)
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+		$returnId = $conn->insert_id;
+		return($returnId);
     $conn->close();
 }
 
@@ -89,6 +91,8 @@ function addNewHostToCircle($circleID, $hostID)
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+		$returnId = $conn->insert_id;
+		return($returnId);
     $conn->close();
 }
 
@@ -104,16 +108,17 @@ function findCircleIDbyName($circleName)
         die("Connection failed: " . $conn->connect_error);
     }
 		$circleName = $conn->real_escape_string($circleName);
-	 	$sql = "SELECT ID FROM CIRCLE WHERE (NAME = '$circleName')";
+	 	$sql = "SELECT 'ID' FROM CIRCLE WHERE (NAME = '$circleName')";
     if ($conn->query($sql) === TRUE) {
         echo "Successfully found circle ID by name";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 		// return($conn->mysqli_fetch_array())
-    $conn->close();
+		/* associative and numeric array */
+		$row = $result->fetch_array(MYSQLI_BOTH);
+		return($row[0]);
 }
-
 /*
 function findCirclesForAUser($userEmail)
 {

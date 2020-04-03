@@ -34,34 +34,39 @@ $userID = 19;
 <?php
 // get the userId
 $userReturn=insertNewUser($firstName, $lastName, $displayName,$emailaddress);
-printf ("<p>New Record has id %d.\n</p>", $userReturn);
-
+printf ("<p>-- New Record has id %d.\n</p>", $userReturn);
 ?>
 <p>After insertNewUser</p>
 <p>Before insertNewCircle</p>
 <?php
 // function insertNewCircle($circleName, $description, $frequency, $url)
 // get the CircleId
-insertNewCircle("Best Tartiflette","The place to be if you love Tartiflette","onetime","https://meet.jit.si/tartiflette");
+$circleReturn = insertNewCircle("Best Tartiflette","The place to be if you love Tartiflette","onetime","https://meet.jit.si/tartiflette");
+printf ("<p>-- New Record has id %d.\n</p>", $circleReturn);
+
 ?>
   <p>After insertNewCircle</p>
   <p>Before addNewUserToCircle</p>
 <?php
 
 // function addNewUserToCircle($circleID, $userID)
-addNewUserToCircle($circleID,$userID);
+$UserReturn = addNewUserToCircle($circleID,$userID);
+printf ("<p>-- New Record has id %d.\n</p>", $UserReturnn);
+
 ?>
   <p>Before findCircleIDbyName</p>
 <?php
 $circleID = 7;
 $userID = 19;
 // addNewHostToCircle($circleID, $userID);
-$circleIdentity=findCircleIDbyName("rumpus2");
+$circleIdentity=findCircleIDbyName("rumpus");
+printf ("<p>-- New Record has id %d.\n</p>", $circleIdentity);
+
 ?>
   <p>After findCircleIDbyName</p>
 <?php
-//$circleIdentity=findCirclesForAUser($emailaddress);
-
+// $circleIdentity=findCircleIDbyName($emailaddress);
+// echo $circleIdentity;
 //echo $circleIdentity;
 /*
 $firstName = $conn->real_escape_string($firstName);
