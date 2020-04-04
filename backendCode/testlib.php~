@@ -1,0 +1,16 @@
+<html>
+<h1>Welcome</h1>
+<p>
+  Insert : joe schmucky joeyboy joe.schmuck@silly.net
+</p>
+<?php
+
+
+require_once 'config.php';
+require_once 'functionLibrary.php';
+echo "past require";
+// function insertNewUser($firstName, $lastName, $userName, $emailaddress)
+insertNewUser('joe','schmucky','joeboy','joe.schmuck@silly.net');
+?>
+<p>past function call</p>
+</html>
